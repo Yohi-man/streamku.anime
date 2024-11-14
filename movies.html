@@ -1,0 +1,374 @@
+<html><head>
+<meta charset="UTF-8">
+<title>StreamKu - Movies</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    padding-top: 80px;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 26, 46, 0.98);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* Movies Page Specific Styles */
+.movies-header {
+    padding: 2rem 5%;
+    position: relative;
+}
+
+.movies-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-container {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 20px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+}
+
+.search-container {
+    position: relative;
+    max-width: 400px;
+    margin-bottom: 2rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 25px;
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary);
+}
+
+.search-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text);
+}
+
+.movies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+    padding: 0 5%;
+}
+
+.movie-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.movie-info {
+    padding: 1rem;
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.quality-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.star-icon {
+    color: #ffd700;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover,
+.page-btn.active {
+    background: var(--primary);
+}
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/streamku.html" class="logo">StreamKu</a>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/movies.html" class="active">Movies</a>
+            <a href="/series.html">TV Series</a>
+        </div>
+    </nav>
+
+    <header class="movies-header">
+        <h1 class="movies-title">Anime Movies</h1>
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search movies...">
+            <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+        </div>
+        <div class="filter-container">
+            <button class="filter-btn active">All</button>
+            <button class="filter-btn active">Action</button>
+            <button class="filter-btn">Adventure</button>
+            <button class="filter-btn">Romance</button>
+            <button class="filter-btn">Fantasy</button>
+            <button class="filter-btn">Sci-Fi</button>
+            <button class="filter-btn">Drama</button>
+        </div>
+    </header>
+
+    <main class="movies-grid">
+        <!-- Movie Card 1 -->
+        <div class="movie-card">
+            <img src="365dys.jpg" alt="Demon Slayer: Mugen Train" class="movie-poster">
+            <div class="quality-badge">HD</div>
+            <div class="movie-info">
+                <h3 class="movie-title">Demon Slayer: Mugen Train</h3>
+                <div class="movie-meta">
+                    <span>2020</span>
+                    <div class="rating">
+                        <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span>9.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie Card 2 -->
+        <div class="movie-card">
+            <img src="aot.jpg" alt="Your Name" class="movie-poster">
+            <div class="quality-badge">4K</div>
+            <div class="movie-info">
+                <h3 class="movie-title">Your Name</h3>
+                <div class="movie-meta">
+                    <span>2016</span>
+                    <div class="rating">
+                        <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span>9.2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="movie-card">
+            <img src="aot.jpg" alt="Your Name" class="movie-poster">
+            <div class="quality-badge">4K</div>
+            <div class="movie-info">
+                <h3 class="movie-title">Yo</h3>
+                <div class="movie-meta">
+                    <span>2016</span>
+                    <div class="rating">
+                        <svg class="star-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <span>9.2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Add more movie cards here -->
+        <!-- Repeat the movie card structure for more movies -->
+
+    </main>
+
+    <div class="pagination">
+        <button class="page-btn active">1</button>
+        <button class="page-btn ">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">5</button>
+        <button class="page-btn">...</button>
+        <button class="page-btn">Next</button>
+    </div>
+
+<script>
+// Search Functionality
+const searchInput = document.querySelector('.search-input');
+const movieCards = document.querySelectorAll('.movie-card');
+
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    movieCards.forEach(card => {
+        const title = card.querySelector('.movie-title').textContent.toLowerCase();
+        if (title.includes(searchTerm)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+});
+
+// Filter Buttons
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Add filter logic here
+    });
+});
+
+// Pagination
+const pageBtns = document.querySelectorAll('.page-btn');
+
+pageBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        pageBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        // Add pagination logic here
+    });
+});
+
+// Lazy Loading Images
+const images = document.querySelectorAll('.movie-poster');
+const imageOptions = {
+    threshold: 0,
+    rootMargin: '0px 0px 50px 0px'
+};
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            observer.unobserve(img);
+        }
+    });
+}, imageOptions);
+
+images.forEach(img => imageObserver.observe(img));
+</script>
+</body>
+</html>

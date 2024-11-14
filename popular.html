@@ -1,0 +1,365 @@
+<html><head><base href="home.html">
+<meta charset="UTF-8">
+<title>StreamKu - Most Veiwed</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.page-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.filter-section {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    background: var(--card-bg);
+    border: none;
+    border-radius: 20px;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: var(--primary);
+}
+
+.filter-btn:hover {
+    background: var(--primary);
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.anime-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background: var(--card-bg);
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.anime-info {
+    padding: 1rem;
+}
+
+.anime-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anime-meta {
+    font-size: 0.8rem;
+    color: rgba(241, 242, 246, 0.8);
+    display: flex;
+    justify-content: space-between;
+}
+
+.rank-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.views-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--card-bg);
+    color: var(--text);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.page-btn.active {
+    background: var(--primary);
+}
+
+.page-btn:hover {
+    background: var(--primary);
+}
+</style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/streamku.html" class="logo">StreamKu</a>
+            <div class="nav-links">
+                <a href="/home.html">Home</a>
+                <a href="/movies.html">Movies</a>
+                <a href="/series.html">TV Series</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <h1 class="page-title">Popular Anime</h1>
+
+        <div class="filter-section">
+            <button class="filter-btn active">All Time</button>
+            <button class="filter-btn">This Week</button>
+            <button class="filter-btn">This Month</button>
+            <button class="filter-btn">This Season</button>
+        </div>
+
+        <div class="anime-grid"></div>
+
+        <div class="pagination">
+            <button class="page-btn">1</button>
+            <button class="page-btn">2</button>
+            <button class="page-btn">3</button>
+            <button class="page-btn">4</button>
+            <button class="page-btn">5</button>
+            <button class="page-btn">→</button>
+        </div>
+    </div>
+
+<script>
+// Sample popular anime data
+const popularAnime = [
+    {
+        title: "Attack on Titan Final Season",
+        image: "aot.jpg",
+        views: "1.2M",
+        rating: "9.8",
+        year: "2023",
+        rank: 1
+    },
+    {
+        title: "Demon Slayer: Entertainment District Arc",
+        image: "demonslider.jpg",
+        views: "980K",
+        rating: "9.7",
+        year: "2023",
+        rank: 2
+    },
+    {
+        title: "Naruto",
+        image: "naruto.jpg",
+        views: "950K",
+        rating: "9.6",
+        year: "2023",
+        rank: 3
+    },
+    {
+        title: "Chainsaw Man",
+        image: "https://source.unsplash.com/400x600/?anime,4",
+        views: "920K",
+        rating: "9.5",
+        year: "2023",
+        rank: 4
+    },
+    {
+        title: "Spy x Family",
+        image: "https://source.unsplash.com/400x600/?anime,5",
+        views: "900K",
+        rating: "9.4",
+        year: "2023",
+        rank: 5
+    },
+    {
+        title: "My Hero Academia Season 6",
+        image: "https://source.unsplash.com/400x600/?anime,6",
+        views: "850K",
+        rating: "9.3",
+        year: "2023",
+        rank: 6
+    },
+    {
+        title: "One Piece",
+        image: "https://source.unsplash.com/400x600/?anime,7",
+        views: "800K",
+        rating: "9.2",
+        year: "2023",
+        rank: 7
+    },
+    {
+        title: "Blue Lock",
+        image: "https://source.unsplash.com/400x600/?anime,8",
+        views: "780K",
+        rating: "9.1",
+        year: "2023",
+        rank: 8
+    },
+    {
+        title: "Bleach: Thousand-Year Blood War",
+        image: "https://source.unsplash.com/400x600/?anime,9",
+        views: "750K",
+        rating: "9.0",
+        year: "2023",
+        rank: 9
+    },
+    {
+        title: "Tokyo Revengers",
+        image: "https://source.unsplash.com/400x600/?anime,10",
+        views: "700K",
+        rating: "8.9",
+        year: "2023",
+        rank: 10
+    }
+];
+
+// Function to create anime cards
+function createAnimeCard(data) {
+    return `
+        <div class="anime-card">
+            <img src="${data.image}" alt="${data.title}">
+            <div class="rank-badge">#${data.rank}</div>
+            <div class="views-badge">${data.views}</div>
+            <div class="anime-info">
+                <h3 class="anime-title">${data.title}</h3>
+                <div class="anime-meta">
+                    <span>⭐ ${data.rating}</span>
+                    <span>${data.year}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Populate anime grid
+const animeGrid = document.querySelector('.anime-grid');
+popularAnime.forEach(anime => {
+    animeGrid.innerHTML += createAnimeCard(anime);
+});
+
+// Filter buttons functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        // Here you would typically filter the content based on the selected timeframe
+    });
+});
+
+// Pagination functionality
+const pageButtons = document.querySelectorAll('.page-btn');
+pageButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        pageButtons.forEach(btn => btn.classList.remove('active'));
+        if (button.textContent !== '→') {
+            button.classList.add('active');
+        }
+        // Here you would typically load the content for the selected page
+    });
+});
+</script>
+</body>
+</html>

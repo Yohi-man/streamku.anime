@@ -1,0 +1,429 @@
+<html><head>
+<meta charset="UTF-8">
+<title>Watch Episode - StreamKu</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #1a1a2e;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: #000;
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.video-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-controls {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.quality-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.quality-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.quality-btn:hover {
+    opacity: 0.8;
+}
+
+.quality-btn.active {
+    background: var(--secondary);
+}
+
+.episode-list {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.episode-list h2 {
+    margin-bottom: 1rem;
+}
+
+.episodes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+}
+
+.episode-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.episode-btn:hover {
+    background: var(--primary);
+}
+
+.episode-btn.active {
+    background: var(--primary);
+}
+
+.anime-info {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.anime-info h1 {
+    margin-bottom: 1rem;
+}
+
+.anime-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-label {
+    font-size: 0.9rem;
+    color: rgba(241, 242, 246, 0.7);
+}
+
+.synopsis {
+    line-height: 1.6;
+}
+</style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/streamku.html" class="logo">StreamKu</a>
+            <div class="nav-links">
+                <a href="/home.html">Home</a>
+                <a href="/movies.html">Movies</a>
+                <a href="/series.html">TV Series</a>
+                <a href="/popular.html">Most Viewed</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="video-container">
+            <video id="videoPlayer" class="video-player" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <div class="video-controls">
+            <div class="quality-buttons">
+                <button class="quality-btn" data-quality="1080">1080p</button>
+                <button class="quality-btn" data-quality="720">720p</button>
+                <button class="quality-btn" data-quality="480">480p</button>
+                <button class="quality-btn active" data-quality="360">360p</button>
+            </div>
+        </div>
+
+        <div class="episode-list">
+            <h2>Episodes</h2>
+            <div class="episodes" id="episodeList">
+                <!-- Episodes will be generated here -->
+            </div>
+        </div>
+
+        <div class="anime-info">
+            <h1>Demon Slayer: Entertainment District Arc</h1>
+            <div class="anime-details">
+                <div class="detail-item">
+                    <span class="detail-label">Status</span>
+                    <span>Ongoing</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Genre</span>
+                    <span>Action, Fantasy, Demons</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Studio</span>
+                    <span>ufotable</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Rating</span>
+                    <span>9.8/10</span>
+                </div>
+            </div>
+            <div class="synopsis">
+                <h3>Synopsis</h3>
+                <p>After the events of the Mugen Train Arc, Tanjirou and his companions are called to investigate disappearances in the Entertainment District of a bustling city. Together with the Sound Hashira Uzui Tengen, they delve into a world of danger and intrigue.</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Video sources for different qualities and episodes
+const videoSources = {
+    episode1: {
+        '1080':'.mp4',
+        '720': 'https://example.com/ep1-720p.mp4',
+        '480': 'https://example.com/ep1-480p.mp4',
+        '360': 'video-1.mp4'
+    },
+    episode2: {
+        '1080':'https://example.com/ep2-1080p.mp4',
+        '720': 'https://example.com/ep2-720p.mp4',
+        '480': 'https://example.com/ep2-480p.mp4',
+        '360': 'Seven.mp4'
+    },
+    episode3: {
+        '1080': 'https://example.com/ep3-1080p.mp4',
+        '720': 'https://example.com/ep3-720p.mp4',
+        '480': 'https://example.com/ep3-480p.mp4',
+        '360': 'Seven-1.mp4'
+    },
+    episode4: {
+        '1080': 'https://example.com/ep4-1080p.mp4',
+        '720': 'https://example.com/ep4-720p.mp4',
+        '480': 'https://example.com/ep4-480p.mp4',
+        '360': 'Seven.mp4'
+    },
+    episode5: {
+        '1080': 'https://example.com/ep5-1080p.mp4',
+        '720': 'https://example.com/ep5-720p.mp4',
+        '480': 'https://example.com/ep5-480p.mp4',
+        '360': 'Seven-2.mp4'
+    },
+    episode6: {
+        '1080': 'https://example.com/ep6-1080p.mp4',
+        '720': 'https://example.com/ep6-720p.mp4',
+        '480': 'https://example.com/ep6-480p.mp4',
+        '360': 'Seven-3.mp4'
+    }
+    // Add more episodes as needed
+};
+
+// Current state
+let currentEpisode = 'episode';
+let currentQuality = '1080';
+let currentTime = 0;
+
+// Generate episode buttons
+const episodeList = document.getElementById('episodeList');
+for (let i = 1; i <= 12; i++) {
+    const button = document.createElement('button');
+    button.className = 'episode-btn' + (i === 1 ? ' active' : '');
+    button.textContent = `EP ${i}`;
+    button.dataset.episode = `episode${i}`;
+    button.onclick = () => changeEpisode(`episode${i}`);
+    episodeList.appendChild(button);
+}
+
+// Video player
+const videoPlayer = document.getElementById('videoPlayer');
+
+// Quality buttons
+document.querySelectorAll('.quality-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const quality = button.dataset.quality;
+        changeQuality(quality);
+        
+        // Update active button
+        document.querySelectorAll('.quality-btn').forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
+
+function changeEpisode(episodeId) {
+    // Save current time
+    currentTime = videoPlayer.currentTime;
+    
+    // Update current episode
+    currentEpisode = episodeId;
+    
+    // Update video source
+    updateVideoSource();
+    
+    // Update active episode button
+    document.querySelectorAll('.episode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.episode === episodeId);
+    });
+}
+
+function changeQuality(quality) {
+    // Save current time
+    currentTime = videoPlayer.currentTime;
+    
+    // Update current quality
+    currentQuality = quality;
+    
+    // Update video source
+    updateVideoSource();
+}
+
+function updateVideoSource() {
+    // Get current video source based on episode and quality
+    const videoSource = videoSources[currentEpisode][currentQuality];
+    
+    // Update video source
+    videoPlayer.src = videoSource;
+    
+    // Load and play video
+    videoPlayer.load();
+    videoPlayer.currentTime = currentTime;
+    
+    // Auto play if video was playing
+    const playPromise = videoPlayer.play();
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.log("Auto-play was prevented:", error);
+        });
+    }
+}
+
+// Save video progress periodically
+setInterval(() => {
+    if (!videoPlayer.paused) {
+        localStorage.setItem(`${currentEpisode}-progress`, videoPlayer.currentTime);
+    }
+}, 5000);
+
+// Load saved progress when changing episodes
+function loadSavedProgress(episodeId) {
+    const savedProgress = localStorage.getItem(`${episodeId}-progress`);
+    if (savedProgress) {
+        videoPlayer.currentTime = parseFloat(savedProgress);
+    }
+}
+
+// Initialize first episode
+updateVideoSource();
+loadSavedProgress(currentEpisode);
+
+// Add keyboard shortcuts for quality changes
+document.addEventListener('keydown', (e) => {
+    switch(e.key) {
+        case '1':
+            changeQuality('360');
+            break;
+        case '2':
+            changeQuality('480');
+            break;
+        case '3':
+            changeQuality('720');
+            break;
+        case '4':
+            changeQuality('1080');
+            break;
+    }
+});
+
+// Handle video errors
+videoPlayer.addEventListener('error', () => {
+    console.log('Video error occurred');
+    // You could implement a fallback or error message here
+});
+
+// Preload next episode
+videoPlayer.addEventListener('ended', () => {
+    const currentEpisodeNumber = parseInt(currentEpisode.replace('episode', ''));
+    const nextEpisodeNumber = currentEpisodeNumber + 1;
+    if (videoSources[`episode${nextEpisodeNumber}`]) {
+        changeEpisode(`episode${nextEpisodeNumber}`);
+    }
+});
+</script>
+</body>
+</html>

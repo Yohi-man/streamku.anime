@@ -1,0 +1,346 @@
+<html><head>
+<meta charset="UTF-8">
+<title>StreamKu - Watch Episode</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    background: #000;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.episode-info {
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.episode-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.episode-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    color: rgba(241, 242, 246, 0.8);
+}
+
+.episode-description {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.episode-navigation {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.nav-button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    background: var(--primary);
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-button:hover {
+    opacity: 0.9;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.episode-list {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+
+.episode-list-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.episode-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 0.8rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.episode-card:hover {
+    background: var(--primary);
+}
+
+.episode-card.active {
+    background: var(--primary);
+}
+
+.quality-selector {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.quality-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.quality-button.active {
+    background: var(--primary);
+}
+
+</style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/home" class="logo">StreamKu</a>
+            <div class="nav-links">
+                <a href="/home">Home</a>
+                <a href="/movies">Movies</a>
+                <a href="/series">TV Series</a>
+                <a href="/popular">Most Viewed</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Replace with actual video player -->
+                <iframe src="Seven-1.mp4" 
+                        title="Episode Player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="quality-selector">
+            <button class="quality-button">360p</button>
+            <button class="quality-button active">720p</button>
+            <button class="quality-button">1080p</button>
+        </div>
+
+        <div class="episode-navigation">
+            <a href="/watch/episode-1" class="nav-button">
+                ← Previous Episode
+            </a>
+            <a href="/watch/episode-3" class="nav-button">
+                Next Episode →
+            </a>
+        </div>
+
+        <div class="episode-info">
+            <h1 class="episode-title">Demon Slayer: Episode 2 - The Trainer</h1>
+            <div class="episode-meta">
+                <span>Season 1</span>
+                <span>Episode 2</span>
+                <span>Duration: 24m</span>
+                <span>Released: Oct 15, 2023</span>
+            </div>
+            <p class="episode-description">
+                After encountering a powerful demon, Tanjiro begins his training under Urokodaki. 
+                As he faces the harsh conditions of Mt. Sagiri, Tanjiro must overcome numerous challenges 
+                to become stronger and avenge his family.
+            </p>
+        </div>
+
+        <div class="episode-list">
+            <h2 class="episode-list-title">Episodes</h2>
+            <div class="episodes-grid">
+                <a href="video.mp4" class="episode-card">
+                    Episode 1
+                </a>
+                <a href="video-1.mp4" class="episode-card active">
+                    Episode 2
+                </a>
+                <a href="/watch/episode-3" class="episode-card">
+                    Episode 3
+                </a>
+                <a href="/watch/episode-4" class="episode-card">
+                    Episode 4
+                </a>
+                <a href="/watch/episode-5" class="episode-card">
+                    Episode 5
+                </a>
+                <a href="/watch/episode-6" class="episode-card">
+                    Episode 6
+                </a>
+                <a href="/watch/episode-7" class="episode-card">
+                    Episode 7
+                </a>
+                <a href="/watch/episode-8" class="episode-card">
+                    Episode 8
+                </a>
+                <a href="/watch/episode-9" class="episode-card">
+                    Episode 9
+                </a>
+                <a href="/watch/episode-10" class="episode-card">
+                    Episode 10
+                </a>
+                <a href="/watch/episode-11" class="episode-card">
+                    Episode 11
+                </a>
+                <a href="/watch/episode-12" class="episode-card">
+                    Episode 12
+                </a>
+            </div>
+        </div>
+    </div>
+
+<script>
+// Quality selector functionality
+const qualityButtons = document.querySelectorAll('.quality-button');
+
+qualityButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        qualityButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        // Here you would typically change the video quality
+        // This is just a placeholder
+        console.log(`Changed quality to ${button.textContent}`);
+    });
+});
+
+// Episode navigation handling
+const prevButton = document.querySelector('.nav-button:first-child');
+const nextButton = document.querySelector('.nav-button:last-child');
+
+// Disable previous button if it's the first episode
+if (window.location.href.includes('episode-1')) {
+    prevButton.style.opacity = '0.5';
+    prevButton.style.pointerEvents = 'none';
+}
+
+// Disable next button if it's the last episode
+if (window.location.href.includes('episode-12')) {
+    nextButton.style.opacity = '0.5';
+    nextButton.style.pointerEvents = 'none';
+}
+
+// Video player controls
+document.querySelector('.video-wrapper').addEventListener('click', function(e) {
+    const video = document.querySelector('iframe');
+    // Add your video player control logic here
+});
+</script>
+</body>
+</html>

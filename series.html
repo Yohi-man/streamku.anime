@@ -1,0 +1,333 @@
+<html><head><base href="home.html">
+<meta charset="UTF-8">
+<title>StreamKu - TV Series</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 26, 46, 0.98);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* Series Page Specific Styles */
+.series-header {
+    margin-top: 80px;
+    padding: 2rem 5%;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+}
+
+.series-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.filter-section {
+    padding: 1rem 5%;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--text);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+}
+
+.search-bar {
+    flex-grow: 1;
+    max-width: 400px;
+    position: relative;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 20px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+}
+
+.search-bar input::placeholder {
+    color: rgba(255,255,255,0.5);
+}
+
+.series-grid {
+    padding: 2rem 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.series-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    background: rgba(255,255,255,0.05);
+}
+
+.series-card:hover {
+    transform: translateY(-10px);
+}
+
+.series-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.series-info {
+    padding: 1rem;
+}
+
+.series-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.series-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.rating svg {
+    color: #ffd700;
+}
+
+.episodes {
+    color: var(--secondary);
+}
+
+.pagination {
+    padding: 2rem 5%;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.page-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: var(--text);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.page-btn:hover,
+.page-btn.active {
+    background: var(--primary);
+}
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/streamku.html" class="logo">StreamKu</a>
+        <div class="nav-links">
+            <a href="/home.html">Home</a>
+            <a href="/movies.html">Movies</a>
+            <a href="/series.html" class="active">TV Series</a>
+        </div>
+    </nav>
+
+    <header class="series-header">
+        <h1>TV Series</h1>
+        <p>Discover and stream your favorite anime series</p>
+    </header>
+
+    <div class="filter-section">
+        <div class="search-bar">
+            <input type="text" placeholder="Search series...">
+        </div>
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Action</button>
+        <button class="filter-btn">Adventure</button>
+        <button class="filter-btn">Romance</button>
+        <button class="filter-btn">Fantasy</button>
+        <button class="filter-btn">Sci-Fi</button>
+    </div>
+
+    <div class="series-grid">
+        <!-- Series cards -->
+        <div class="series-card">
+            <img src="zoro.png" alt="One Piece" class="series-poster">
+            <div class="series-info">
+                <h3 class="series-title">One Piece</h3>
+                <div class="series-meta">
+                    <div class="rating">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        9.2
+                    </div>
+                    <span class="episodes">EP 1074</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="series-card">
+            <img src="m.jpg" alt="Jujutsu Kaisen" class="series-poster">
+            <div class="series-info">
+                <h3 class="series-title">Jujutsu Kaisen</h3>
+                <div class="series-meta">
+                    <div class="rating">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        9.5
+                    </div>
+                    <span class="episodes">EP 24</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add more series cards here -->
+    </div>
+
+    <div class="pagination">
+        <button class="page-btn">1</button>
+        <button class="page-btn active">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">4</button>
+        <button class="page-btn">5</button>
+        <button class="page-btn">→</button>
+    </div>
+
+<script>
+// Filter functionality
+const filterButtons = document.querySelectorAll('.filter-btn');
+filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        // Add filter logic here
+    });
+});
+
+// Search functionality
+const searchInput = document.querySelector('.search-bar input');
+searchInput.addEventListener('input', (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    // Add search logic here
+});
+
+// Lazy loading images
+const images = document.querySelectorAll('img');
+const imageOptions = {
+    threshold: 0,
+    rootMargin: '0px 0px 50px 0px'
+};
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            observer.unobserve(img);
+        }
+    });
+}, imageOptions);
+
+images.forEach(img => imageObserver.observe(img));
+
+// Pagination functionality
+const pageButtons = document.querySelectorAll('.page-btn');
+pageButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        pageButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        // Add pagination logic here
+    });
+});
+
+// Add hover effects
+const seriesCards = document.querySelectorAll('.series-card');
+seriesCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-10px)';
+    });
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0)';
+    });
+});
+</script>
+</body>
+</html>

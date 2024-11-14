@@ -1,0 +1,502 @@
+<html><head><base href="home.html">
+<meta charset="UTF-8">
+<title>StreamKu - Home</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+    --card-bg: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+nav {
+    background: rgba(26, 26, 46, 0.95);
+    padding: 1rem 2rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.main-content {
+    margin-top: 80px;
+    padding: 2rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Slider Styles */
+.slider-container {
+    position: relative;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    overflow: hidden;
+    height: 400px;
+    cursor: pointer;
+}
+
+.slider {
+    display: flex;
+    transition: transform 0.5s ease;
+    height: 100%;
+}
+
+.slide {
+    min-width: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+}
+
+.slider-buttons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.slider-btn {
+    background: rgba(255,255,255,0.3);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s ease;
+    transition: var(--primary);
+}
+
+.slider-btn:hover {
+    background: var(--primary);
+}
+
+/* Section Styles */
+.section-title {
+    color: #ff6b6b;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.view-all {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.anime-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    background: var(--card-bg);
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+
+.anime-card img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+.anime-info {
+    padding: 1rem;
+}
+
+.anime-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anime-meta {
+    font-size: 0.8rem;
+    color: rgba(241, 242, 246, 0.8);
+    display: flex;
+    justify-content: space-between;
+}
+
+.episode-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+.episode-rank {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--secondary);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+}
+/*footer*/
+.footer {
+    padding: 1rem;
+    
+
+}
+</style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <a href="/streamku.html" class="logo">StreamKu</a>
+            <div class="nav-links">
+                <a href="/home.html" class="active">Home</a>
+                <a href="/movies.html">Movies</a>
+                <a href="/series.html">TV Series</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="demonslider.jpg" alt="Featured Anime 1"></a>
+                    <div class="slide-content">
+                        <h2>Demon Slayer: Latest Season</h2>
+                        <p>Experience the epic continuation of Tanjiro's journey</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode copy.html" style="text-decoration: none; color: inherit;"><img src="dc-slider.jpg" alt="Featured Anime 2"></a>
+                    <div class="slide-content">
+                        <h2>Detective Conan</h2>
+                        <p>A detective conan</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode copy 2.html" style="text-decoration: none; color: inherit;"><img src="boku-no-hero-academia.jpg" alt="Featured Anime 3"></a>
+                    <div class="slide-content">
+                        <h2>Boku No Hero Academia</h2>
+                        <p>The battle against villans continues</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="bleach.jpg" alt="Featured Anime 3"></a>
+                    <div class="slide-content">
+                        <h2>Bleach</h2>
+                        <p>The battle against Espadas</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="bleach.jpg" alt="Featured Anime 3"></a>
+                    <div class="slide-content">
+                        <h2>baki</h2>
+                        <p>theee</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="bleach.jpg" alt="Featured Anime 3"></a>
+                    <div class="slide-content">
+                        <h2>baki</h2>
+                        <p>theee</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="bleach.jpg" alt="Featured Anime 3"></a>
+                    <div class="slide-content">
+                        <h2>baki</h2>
+                        <p>theee</p>
+                    </div>
+                </div>
+                <!-- More slides will be added dynamically-->
+            </div>
+            <div class="slider-buttons">
+                <button class="slider-btn prev">←</button>
+                <button class="slider-btn next">→</button>
+            </div>
+        </div>
+
+        <section>
+            <div class="section-title">
+                <h2>Popular</h2>
+                <a href="/popular.html" class="view-all">View All</a>
+            </div>
+        <div class="anime-grid">
+            <div class="anime-card">
+                <a href="ep.html" style="text-decoration: none; color: inherit;"><img src="zoro.png" alt="Anime Title 2"></a>
+                    <div class="episode-badge">EP 1089</div>
+                        <div class="anime-info">
+                            <h3 class="anime-title">One Piece</h3>
+                                <div class="anime-meta">
+                                    <span>⭐ 9.3</span>
+                                    <span>2003</span>
+                                </div>
+            </div>
+        </div>
+        <div class="anime-grid">
+            <div class="anime-card">
+                <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="aot.jpg" alt="Anime Title 2"></a>
+                    <div class="episode-badge">EP 24</div>
+                        <div class="anime-info">
+                            <h3 class="anime-title">Attack On Titan</h3>
+                                <div class="anime-meta">
+                                    <span>⭐ 9.3</span>
+                                    <span>2018</span>
+                                </div>
+            </div>
+        </div>
+        <!-- Trending Anime Cards -->
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Most Veiwed</h2>
+                <a href="/most-veiwed.html" class="view-all">View All</a>
+            </div>
+            <div class="anime-grid">
+                <div class="anime-card">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="naruto.jpg" alt="Anime Title 1"></a>
+                    <div class="episode-rank">#1</div>
+                    <div class="episode-badge">EP 24</div>
+                    <div class="anime-info">
+                        <h3 class="anime-title">Naruto</h3>
+                        <div class="anime-meta">
+                            <span>⭐ 9.9</span>
+                            <span>1998</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="anime-grid">
+                    <div class="anime-card">
+                        <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="zoro.png" alt="Anime Title 2"></a>
+                        <div class="episode-badge">EP 1099</div>
+                        <div class="anime-info">
+                            <h3 class="anime-title">One Piece</h3>
+                            <div class="anime-meta">
+                                <span>⭐ 9.9</span>
+                                <span>2004</span>
+                            </div>
+                        </div>
+                    </div>
+                <!--Latest Episodes Cards-->
+            </div>
+        </section>
+
+        <section>
+            <div class="section-title">
+                <h2>Latest Episode</h2>
+                <a href="/latest-ep.html" class="view-all">View All</a>
+            </div>
+            <div class="anime-grid">
+                <div class="anime-card">
+                    <a href="episode.html" style="text-decoration: none; color: inherit;"><img src="dandan.jpg" alt="Anime Title 1"></a>
+                    <div class="episode-badge">EP 24</div>
+                    <div class="anime-info">
+                        <h3 class="anime-title">DanDan</h3>
+                        <div class="anime-meta">
+                            <span>⭐ 8.4</span>
+                            <span>2024</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Popular Anime Cards -->
+            </div>
+        </section>
+    </div>
+
+<script>
+/* Sample data for anime cards
+const animeData = [
+    {
+        title: "Attack on Titan Final Season",
+        image: "aot.jpg",
+        episode: "EP 12",
+        rating: "9.8",
+        year: "2023"
+    }
+    // Add more anime data here
+];
+
+// Function to create anime cards
+function createAnimeCard(data) {
+    return `
+        <div class="anime-card">
+            <img src="${data.image}" alt="${data.title}">
+            <div class="episode-badge">${data.episode}</div>
+            <div class="anime-info">
+                <h3 class="anime-title">${data.title}</h3>
+                <div class="anime-meta">
+                    <span>⭐ ${data.rating}</span>
+                    <span>${data.year}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Populate anime grids
+document.querySelectorAll('.anime-grid').forEach(grid => {
+    let html = '';
+    for (let i = 0; i < 6; i++) {
+        html += createAnimeCard({
+            title: `Anime Title ${i + 1}`,
+            image: `dandan.jpg`,
+            episode: `EP ${Math.floor(Math.random() * 12) + 1}`,
+            rating: (Math.random() * 2 + 8).toFixed(1),
+            year: "2023"
+        });
+    }
+    grid.innerHTML = html;
+});
+*/
+// Slider functionality
+const slider = document.querySelector('.slider');
+const slides = [
+    {
+        image: "slider9890.jpg",
+        title: "Demon Slayer: Latest Season",
+        description: "Experience the epic continuation of Tanjiro's journey"
+    },
+    {
+        image: "slider9777.jpg",
+        title: "Detective Conan",
+        description: "A detective conan"
+    },
+    {
+        image: "boku-no-hero-academia.jpg",
+        title: "Boku No Hero Academia",
+        description: "The battle against villans continues"
+    },
+    {
+        image: "boku-no-hero-academia.jpg",
+        title: "Boku No Hero Academia",
+        description: "The battle against villans continues"
+    },
+    {
+        image: "boku-no-hero-academia.jpg",
+        title: "Boku No Hero Academia",
+        description: "The battle against villans continues"
+    },
+    {
+        image: "boku-no-hero-academia.jpg",
+        title: "Boku No Hero Academia",
+        description: "The battle against villans continues"
+    },
+    {
+        image: "boku-no-hero-academia.jpg",
+        title: "Boku No Hero Academia",
+        description: "The battle against villans continues"
+    }
+];
+// Populate slider
+slides.forEach(slide => {
+    slider.innerHTML += `
+        <div class="slide">
+            <img src="${slide.image}" alt="${slide.title}">
+            <div class="slide-content">
+                <h2>${slide.title}</h2>
+                <p>${slide.description}</p>
+            </div>
+        </div>
+    `;
+});
+let currentSlide = 0;
+
+function showSlide(index) {
+    slider.style.transform = `translateX(-${index * 100}%)`;
+}
+
+document.querySelector('.prev').addEventListener('click', () => {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+});
+
+document.querySelector('.next').addEventListener('click', () => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+});
+
+// Auto-advance slider
+setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}, 5000);
+</script>
+</body>
+</html>

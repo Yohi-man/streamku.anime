@@ -1,0 +1,355 @@
+<html><head><base href="https://streamku.anime/home">
+<meta charset="UTF-8">
+<title>StreamKu - Home</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --primary: #5f27cd;
+    --secondary: #ff6b6b;
+    --background: #1a1a2e;
+    --text: #f1f2f6;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(26, 26, 46, 0.98);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.hero-slider {
+    margin-top: 70px;
+    position: relative;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: flex-end;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-content {
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    padding: 2rem 5%;
+    width: 100%;
+}
+
+.slide-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.slide-description {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+.watch-btn {
+    padding: 0.8rem 2rem;
+    background: var(--primary);
+    color: var(--text);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.watch-btn:hover {
+    transform: scale(1.05);
+}
+
+.section {
+    padding: 3rem 5%;
+}
+
+.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+}
+
+.anime-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.anime-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.anime-card:hover {
+    transform: scale(1.05);
+}
+
+.anime-poster {
+    width: 100%;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.anime-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+}
+
+.anime-title {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.anime-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+}
+
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.slider-dot.active {
+    background: var(--primary);
+}
+
+</style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="/" class="logo">StreamKu</a>
+        <div class="nav-links">
+            <a href="/home" class="active">Home</a>
+            <a href="/movies">Movies</a>
+            <a href="/series">TV Series</a>
+        </div>
+    </nav>
+
+    <div class="hero-slider">
+        <div class="slide active" style="background-image: url('blackclover-slider.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">Attack on Titan Final Season</h2>
+                <p class="slide-description">The epic conclusion to humanity's fight for survival. Watch as Eren and his companions face their ultimate destiny.</p>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('boku-heroslider.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">Demon Slayer</h2>
+                <p class="slide-description">Follow Tanjiro's journey as he fights demons and seeks to cure his sister in this breathtaking animated series.</p>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url('aot.jpg')">
+            <div class="slide-content">
+                <h2 class="slide-title">Jujutsu Kaisen</h2>
+                <p class="slide-description">Enter a world of curses and sorcery where students battle supernatural forces to protect humanity.</p>
+                <button class="watch-btn">Watch Now</button>
+            </div>
+        </div>
+        <div class="slider-nav">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </div>
+
+    <section class="section">
+        <h2 class="section-title">Trending Now</h2>
+        <div class="anime-grid">
+            <!-- Trending anime cards -->
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">New Releases</h2>
+        <div class="anime-grid">
+            <!-- New releases cards -->
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Popular This Week</h2>
+        <div class="anime-grid">
+            <!-- Popular anime cards -->
+        </div>
+    </section>
+
+<script>
+// Hero Slider Functionality
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.slider-dot');
+
+function showSlide(index) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+    
+    slides[index].classList.add('active');
+    dots[index].classList.add('active');
+}
+
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Auto advance slides
+setInterval(nextSlide, 5000);
+
+// Click functionality for slider dots
+dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+    });
+});
+
+// Generate anime cards dynamically
+const animeData = [
+    {
+        title: "Attack on Titan",
+        image: "https://source.unsplash.com/300x450/?anime-1",
+        rating: "9.8",
+        year: "2023"
+    },
+    // Add more anime data
+];
+
+function createAnimeCard(anime) {
+    return `
+        <div class="anime-card">
+            <img src="${anime.image}" alt="${anime.title}" class="anime-poster">
+            <div class="anime-info">
+                <h3 class="anime-title">${anime.title}</h3>
+                <div class="anime-meta">
+                    <span class="rating">★ ${anime.rating}</span>
+                    <span class="year">${anime.year}</span>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+const animeGrids = document.querySelectorAll('.anime-grid');
+animeGrids.forEach(grid => {
+    let html = '';
+    for(let i = 0; i < 6; i++) {
+        const randomAnime = animeData[Math.floor(Math.random() * animeData.length)];
+        html += createAnimeCard(randomAnime);
+    }
+    grid.innerHTML = html;
+});
+
+// Add smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+// Add lazy loading for images
+const images = document.querySelectorAll('img');
+const imageOptions = {
+    threshold: 0,
+    rootMargin: '0px 0px 50px 0px'
+};
+
+const imageObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            observer.unobserve(img);
+        }
+    });
+}, imageOptions);
+
+images.forEach(img => imageObserver.observe(img));
+</script>
+</body>
+</html>
